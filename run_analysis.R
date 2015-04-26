@@ -36,8 +36,18 @@ X_extracted <-  X <- X[, extracted]
 activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt")
 activity_labels[, 2] <- gsub("_", " ", activity_labels[, 2])   #replace "_"
 
-colnames(activity_labels) <- c("activityId", "activity")      #set matrix header
+
 
 
 
 ## Appropriately labels the data set with descriptive variable names. (4)
+
+colnames(activity_labels) <- c("activityId", "activity")      #set matrix header
+
+out <- cbind(subject, y, X_extracted)
+out <- cbind(out, activity_labels)
+
+#out <- cbind(subject, y, X) #!!!!!!!!!!!!!!!!!!!!!!!!!!
+# write.table(bindedClean, file = "out.txt")
+
+
